@@ -71,6 +71,12 @@ function mockFromQuery() {
   return key && Object.prototype.hasOwnProperty.call(MOCK_FILES, key) ? MOCK_FILES[key] : null;
 }
 
+// mock 파일은 이 모듈(link/)을 기준으로 찾는다.
+// index.html 이 어느 위치에 있든(루트 배포 포함) 경로가 깨지지 않게 하기 위함이다.
+function mockUrl(file) {
+  return new URL(`./mock/${file}`, import.meta.url).href;
+}
+
 function apiUrl() {
   // GET {API_BASE}/api/plaza/recent?limit=4&mobile=true
   const base = String(CONFIG.API_BASE).replace(/\/+$/, '');
@@ -87,11 +93,11 @@ function apiUrl() {
  */
 export function recentSource() {
   const mock = mockFromQuery();
-  if (mock) return { url: `./mock/${mock}`, kind: 'mock' };
+  if (mock) return { url: mockUrl(mock), kind: 'mock' };
 
   if (SOURCE.MODE === 'mock') {
     const file = MOCK_FILES[SOURCE.MOCK_FILE];
-    if (file) return { url: `./mock/${file}`, kind: 'mock' };
+    if (file) return { url: mockUrl(file), kind: 'mock' };
   }
 
   // MODE 가 'api' 여도 API_BASE 가 TODO_ 면 요청하지 않는다.

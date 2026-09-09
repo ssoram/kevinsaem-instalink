@@ -1,32 +1,32 @@
 [
   {
     "title": "ㄹㅈㄷ아이템 알까기",
-    "thumbnail": "./mock/thumb-1.svg",
-    "url": "./mock/#work-1",
+    "thumbnail": "./thumb-1.svg",
+    "url": "#work-1",
     "category": "게임",
     "grade": "중등",
     "mobileSupported": true
   },
   {
     "title": "쉬는 시간 10분 안에 친구랑 한 판 끝내는 초고속 알까기 대난투 스페셜 에디션 시즌2 최종본 진짜최종",
-    "thumbnail": "./mock/thumb-2.svg",
-    "url": "./mock/#work-2",
+    "thumbnail": "./thumb-2.svg",
+    "url": "#work-2",
     "category": "앱",
     "grade": "초등",
     "mobileSupported": true
   },
   {
     "title": "우리 반 급식 투표 사이트",
-    "thumbnail": "./mock/thumb-3.svg",
-    "url": "./mock/#work-3",
+    "thumbnail": "./thumb-3.svg",
+    "url": "#work-3",
     "category": "웹",
     "grade": "고등",
     "mobileSupported": true
   },
   {
     "title": "고양이 피하기",
-    "thumbnail": "./mock/thumb-4.svg",
-    "url": "./mock/#work-4",
+    "thumbnail": "./thumb-4.svg",
+    "url": "#work-4",
     "category": "게임",
     "grade": "중등",
     "mobileSupported": false

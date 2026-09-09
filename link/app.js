@@ -175,12 +175,24 @@ function emptyTile() {
   return span;
 }
 
-function makeTile(item) {
+// 썸네일 주소를 데이터 소스 기준으로 해석한다.
+// 실 API 는 절대 URL 을 주므로 그대로 통과하고, mock 의 상대 경로만
+// recent.json 위치(link/mock/) 기준으로 풀린다 — index.html 이 어디 있든 안 깨진다.
+function resolveFrom(url, base) {
+  try {
+    return new URL(url, base).href;
+  } catch {
+    return url;
+  }
+}
+
+function makeTile(item, base) {
+
   const span = document.createElement('span');
   span.className = 'tile';
 
   const img = document.createElement('img');
-  img.src = item.thumbnail;
+  img.src = resolveFrom(item.thumbnail, base);
   // 썸네일 alt 는 작품 제목. 제목이 없으면 가짜로 지어내지 않고 장식 이미지로 둔다(alt="")
   img.alt = str(item.title);
   img.loading = 'lazy';
@@ -212,15 +224,17 @@ function makeTile(item) {
  * 작품이 없으면(소스 없음 / 빈 배열 / 실패) 빈 칸 4개로 자리만 지킨다.
  * 가짜 제목이나 대체 이미지를 채우지 않는다. 버튼은 언제나 그대로.
  */
-function renderTiles(items) {
+function renderTiles(result) {
   const grid = document.getElementById('plaza-grid');
   if (!grid) return;
 
+  const items = result && result.items;
+  const base = (result && result.base) || location.href;
   const list = (Array.isArray(items) ? items : []).filter(usable).slice(0, MAX_ITEMS);
 
   // 2열 그리드가 항상 꽉 찬 줄로 끝나게 빈 칸을 채운다 (3건만 와도 안 깨짐)
   const slots = list.length ? Math.ceil(list.length / 2) * 2 : MAX_ITEMS;
-  const nodes = list.map(makeTile);
+  const nodes = list.map((it) => makeTile(it, base));
   while (nodes.length < slots) nodes.push(emptyTile());
 
   grid.replaceChildren(...nodes);
@@ -233,7 +247,7 @@ async function loadRecent() {
   if (!source) {
     console.info('[link] 광장 데이터 소스가 아직 없습니다 (API_BASE 가 TODO). 미리보기는 빈 상태로 둡니다. ' +
       '개발 중 확인은 주소 뒤에 ?mock=recent / ?mock=recent-3 / ?mock=empty 를 붙이세요.');
-    return [];
+    return { items: [], base: location.href };
   }
   if (source.kind === 'mock') {
     console.warn('[link] mock 데이터로 표시 중입니다 (' + source.url + '). 실제 작품이 아닙니다 — 배포 기본값은 빈 미리보기입니다.');
@@ -244,11 +258,11 @@ async function loadRecent() {
   try {
     const res = await fetch(source.url, { signal: ctrl.signal, credentials: 'same-origin' });
     if (!res.ok) throw new Error('HTTP ' + res.status);
-    return await res.json();
+    return { items: await res.json(), base: res.url || source.url };
   } catch (err) {
     // 실패해도 페이지는 그대로 산다
     console.warn('[link] 최신 작품을 불러오지 못했습니다 (' + source.url + '):', err && err.message);
-    return [];
+    return { items: [], base: source.url };
   } finally {
     clearTimeout(timer);
   }
