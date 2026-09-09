@@ -180,7 +180,7 @@ TODO_API_BASE
 ### 엔드포인트
 
 ```
-GET {API_BASE}/api/plaza/recent?limit=4&mobile=true
+GET {API_BASE}/api/plaza/best?limit=4&mobile=true
 ```
 
 ### 응답
@@ -204,7 +204,8 @@ GET {API_BASE}/api/plaza/recent?limit=4&mobile=true
 - `mobile=true` 파라미터를 받으면 **모바일 지원 작품만** 반환
   (→ 9절 별도 작업 참고. 플래그 준비 전까지는 파라미터 무시하고 전체 반환)
 - CORS: 같은 도메인 배포이므로 기본적으로 불필요. 서브도메인이면 허용 설정
-- 정렬은 **최신순**. `BEST 픽`은 갱신 주기가 불규칙하므로 사용하지 않는다
+- 정렬은 **`BEST 픽`(좋아요 수 기준)**. 광장에서 자동으로 갱신되므로 사람이 관리할 필요가 없다.
+  아이들이 실제로 계속 하는 작품이 올라오므로, 헤드라인의 증거로 가장 적합하다
 
 ### 클라이언트 측 요구사항
 

@@ -78,20 +78,20 @@ function mockUrl(file) {
 }
 
 function apiUrl() {
-  // GET {API_BASE}/api/plaza/recent?limit=4&mobile=true
+  // GET {API_BASE}/api/plaza/best?limit=4&mobile=true
   const base = String(CONFIG.API_BASE).replace(/\/+$/, '');
   const qs = new URLSearchParams({
     limit: String(SOURCE.LIMIT),
     mobile: String(Boolean(SOURCE.MOBILE_ONLY)),
   });
-  return `${base}/api/plaza/recent?${qs}`;
+  return `${base}/api/plaza/best?${qs}`;
 }
 
 /**
- * 최신 작품 목록을 가져올 URL. 데이터 소스 분기는 이 함수 하나뿐이다.
+ * 광장 작품 목록(BEST · 좋아요 수 기준)을 가져올 URL. 데이터 소스 분기는 이 함수 하나뿐이다.
  * @returns {{url: string, kind: 'api'|'mock'} | null}  null 이면 소스 없음 = 빈 미리보기
  */
-export function recentSource() {
+export function worksSource() {
   const mock = mockFromQuery();
   if (mock) return { url: mockUrl(mock), kind: 'mock' };
 
@@ -101,7 +101,7 @@ export function recentSource() {
   }
 
   // MODE 가 'api' 여도 API_BASE 가 TODO_ 면 요청하지 않는다.
-  // 'TODO_API_BASE/api/plaza/recent...' 같은 엉뚱한 URL 로 실제 요청이 나가는 것을 막는다.
+  // 'TODO_API_BASE/api/plaza/best...' 같은 엉뚱한 URL 로 실제 요청이 나가는 것을 막는다.
   if ((SOURCE.MODE === 'api' || SOURCE.MODE === 'auto') && !isTodo(CONFIG.API_BASE)) {
     return { url: apiUrl(), kind: 'api' };
   }

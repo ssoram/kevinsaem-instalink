@@ -47,7 +47,7 @@ export const CONFIG = {
 ### 요청
 
 ```
-GET {API_BASE}/api/plaza/recent?limit=4&mobile=true
+GET {API_BASE}/api/plaza/best?limit=4&mobile=true
 ```
 
 | 파라미터 | 타입 | 기본 | 설명 |
@@ -81,7 +81,9 @@ GET {API_BASE}/api/plaza/recent?limit=4&mobile=true
 
 ### 정렬
 
-**최신순.** `BEST 픽`은 갱신 주기가 불규칙해 사용하지 않는다.
+**`BEST 픽` — 좋아요 수 기준.** 광장에서 자동 갱신되므로 별도 관리가 필요 없다.
+
+인기 있는 작품이 오래 상위에 남는 것은 정상이다. 갱신이 안 된 것이 아니라 아이들이 계속 하고 있다는 뜻이다.
 
 ### 에러
 

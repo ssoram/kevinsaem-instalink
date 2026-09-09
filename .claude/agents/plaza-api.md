@@ -1,6 +1,6 @@
 ---
 name: plaza-api
-description: Use this agent when working on the /api/plaza/recent endpoint or the thumbnail resize pipeline for Maker Plaza. Owns /api/plaza/** and thumbnail generation.
+description: Use this agent when working on the /api/plaza/best endpoint or the thumbnail resize pipeline for Maker Plaza. Owns /api/plaza/** and thumbnail generation.
 tools: Read, Write, Edit, Glob, Grep, Bash
 model: inherit
 ---
@@ -22,7 +22,7 @@ model: inherit
 ## 소유 파일
 
 ```
-/api/plaza/recent   엔드포인트
+/api/plaza/best   엔드포인트
 썸네일 리사이즈 파이프라인
 ```
 
@@ -37,14 +37,13 @@ model: inherit
 `CONTRACT.md` 2절의 스키마를 정확히 따른다. 필드명을 임의로 바꾸면 A가 깨진다.
 
 ```
-GET /api/plaza/recent?limit=4&mobile=true
+GET /api/plaza/best?limit=4&mobile=true
 ```
 
-### 정렬은 최신순
+### 정렬은 `BEST 픽` — 좋아요 수 기준
 
-`BEST 픽`을 쓰지 않는다. 갱신 주기가 불규칙해서
-(스크린샷 시점 기준 "이번 주 BEST"에 49일 전 작품이 걸려 있었다)
-자동화의 이점이 사라진다.
+광장의 BEST 는 좋아요 수로 자동 갱신되므로 사람이 관리할 필요가 없다.
+인기 작품이 오래 상위에 남는 것은 정상이며, 아이들이 계속 하고 있다는 뜻이다.
 
 ### 에러 시 빈 배열
 

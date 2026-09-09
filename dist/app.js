@@ -4,7 +4,7 @@
 // 원칙: 데이터 소스가 없거나 API 가 실패해도 페이지 나머지는 정상 동작한다.
 //       광장 버튼과 카드 탭 영역은 어떤 경우에도 살아 있고, 미리보기 칸만 빈 자리로 남는다.
 
-import { CONFIG, SOURCE, recentSource, TRACK, isTodo } from './config.js';
+import { CONFIG, SOURCE, worksSource, TRACK, isTodo } from './config.js';
 
 const MAX_ITEMS = 4;
 const FETCH_TIMEOUT_MS = 6000;
@@ -241,7 +241,7 @@ function renderTiles(result) {
 }
 
 async function loadRecent() {
-  const source = recentSource();
+  const source = worksSource();
 
   // 배포 기본 상태 — 광장 API 가 아직 없다. 미리보기 칸은 빈 자리로 둔다.
   if (!source) {
@@ -261,7 +261,7 @@ async function loadRecent() {
     return { items: await res.json(), base: res.url || source.url };
   } catch (err) {
     // 실패해도 페이지는 그대로 산다
-    console.warn('[link] 최신 작품을 불러오지 못했습니다 (' + source.url + '):', err && err.message);
+    console.warn('[link] 광장 작품을 불러오지 못했습니다 (' + source.url + '):', err && err.message);
     return { items: [], base: source.url };
   } finally {
     clearTimeout(timer);

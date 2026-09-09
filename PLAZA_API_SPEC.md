@@ -7,7 +7,7 @@
 ## 만들 것
 
 ```
-GET https://game.kevinsaem.com/api/plaza/recent?limit=4&mobile=true
+GET https://game.kevinsaem.com/api/plaza/best?limit=4&mobile=true
 ```
 
 ```json
@@ -33,7 +33,7 @@ GET https://game.kevinsaem.com/api/plaza/recent?limit=4&mobile=true
 | `mobileSupported` | X | 없으면 생략 |
 
 **규칙**
-- 정렬 최신순 (`BEST 픽` 아님)
+- **정렬: `BEST 픽` — 좋아요 수 내림차순** (광장에서 이미 자동 갱신되는 기준)
 - 에러여도 `200` + `[]` (4xx/5xx 금지)
 - `limit`이 작품 수보다 커도 에러 없이
 - `mobile` 파라미터는 무시하고 전체 반환해도 됨
@@ -60,7 +60,7 @@ CORS 허용 도메인: (설정한 값 그대로. 예: * 또는 https://...)
 
 실제 응답:
 ```json
-(curl "https://game.kevinsaem.com/api/plaza/recent?limit=4" 결과 붙여넣기)
+(curl "https://game.kevinsaem.com/api/plaza/best?limit=4" 결과 붙여넣기)
 ```
 
 mobileSupported 필드: 있음 / 없음
