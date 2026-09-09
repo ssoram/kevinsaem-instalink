@@ -22,7 +22,7 @@ export const CONFIG = {
   // 구글 지도 keyless 임베드(`output=embed`). API 키·좌표 불필요.
   // 다른 지도로 바꾸려면 제공사의 '지도 퍼가기' iframe 코드에서 src 값만 이 자리에 넣으면 된다.
   // 핀 위치가 부정확하면 q= 뒤를 정확한 주소나 '위도,경도' 로 바꾸면 된다.
-  MAP_EMBED_URL: 'https://maps.google.com/maps?q=%EC%84%A0%EB%B6%80%EB%A1%9C%20183%20%ED%99%94%EC%84%B1%ED%94%84%EB%9D%BC%EC%9E%90&z=17&output=embed',
+  MAP_EMBED_URL: 'https://maps.google.com/maps?q=%EC%BC%80%EB%B9%88%EC%83%98AI%EC%BD%94%EB%94%A9%ED%95%99%EC%9B%90%20%EC%84%A0%EB%B6%80%EB%A1%9C%20183&z=17&output=embed',
 };
 
 /** 아직 사람이 채우지 않은 값인지 */
