@@ -49,19 +49,16 @@ GET https://game.kevinsaem.com/api/plaza/best?limit=4&mobile=true
 
 ---
 
-## 다 되면 이 양식으로 보내주면 내가 넣는다
+## 다 되면 이것만 보내주면 내가 넣는다
 
-````md
-API_BASE: https://game.kevinsaem.com
+1. 아래 명령 결과를 그대로 붙여넣기
 
-CORS 허용 도메인: (설정한 값 그대로. 예: * 또는 https://...)
+   ```bash
+   curl -i "https://game.kevinsaem.com/api/plaza/best?limit=4&mobile=true"
+   ```
 
-/link 배포 도메인: http://link.kevinsaem.com/ (확정)
+   `-i` 를 붙이면 응답 본문과 함께 CORS 헤더까지 한 번에 확인된다.
 
-실제 응답:
-```json
-(curl "https://game.kevinsaem.com/api/plaza/best?limit=4" 결과 붙여넣기)
-```
+2. `mobileSupported` 필드를 넣었는지 여부 (안 넣었으면 안 넣었다고만)
 
-mobileSupported 필드: 있음 / 없음
-````
+이 둘이면 `config.js` 에 `API_BASE` 를 채우고 실제로 뜨는지까지 확인할 수 있다.
