@@ -1,0 +1,30 @@
+[
+  {
+    "title": "ㄹㅈㄷ아이템 알까기",
+    "thumbnail": "https://game.kevinsaem.com/uploads/work-thumbs/u10049_ea1638d43343.jpg",
+    "url": "https://kimbbo41-lang.github.io/-./",
+    "category": "코드",
+    "grade": "중등"
+  },
+  {
+    "title": "1945 슈팅 게임",
+    "thumbnail": "https://game.kevinsaem.com/uploads/work-thumbs/u10409_45d4af021d60.jpg",
+    "url": "https://thunderous-arithmetic-73cda9.netlify.app/",
+    "category": "게임",
+    "grade": "초등"
+  },
+  {
+    "title": "AsrtraLab",
+    "thumbnail": "https://game.kevinsaem.com/uploads/work-thumbs/u10451_bdc7a864ed9e.jpg",
+    "url": "https://astronomymainmvp.pages.dev/",
+    "category": "웹",
+    "grade": "중등"
+  },
+  {
+    "title": "포켓몬 딜계산기",
+    "thumbnail": "https://game.kevinsaem.com/uploads/work-thumbs/u10049_580725757049.jpg",
+    "url": "https://kimbbo41-lang.github.io/pokecalc/",
+    "category": "앱",
+    "grade": "중등"
+  }
+]

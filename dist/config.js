@@ -47,7 +47,7 @@ export const MOCK_FILES = {
 
 export const SOURCE = {
   // 'auto' | 'api' | 'mock'
-  //   auto : API_BASE 가 TODO_ 면 소스 없음(빈 미리보기), 채워져 있으면 실 API. ← 배포 기본값
+  //   auto : API_BASE 가 채워져 있으면 실 API, 아니면 스냅샷(works.json). ← 배포 기본값
   //   api  : 무조건 실 API
   //   mock : 무조건 mock (개발 중에만 쓴다. 배포 상태로 두지 말 것)
   MODE: 'auto',
@@ -89,7 +89,7 @@ function apiUrl() {
 
 /**
  * 광장 작품 목록(BEST · 좋아요 수 기준)을 가져올 URL. 데이터 소스 분기는 이 함수 하나뿐이다.
- * @returns {{url: string, kind: 'api'|'mock'} | null}  null 이면 소스 없음 = 빈 미리보기
+ * @returns {{url: string, kind: 'api'|'mock'|'snapshot'}}
  */
 export function worksSource() {
   const mock = mockFromQuery();
@@ -106,7 +106,10 @@ export function worksSource() {
     return { url: apiUrl(), kind: 'api' };
   }
 
-  return null; // 데이터 소스 없음 — 미리보기 칸은 빈 자리로 둔다
+  // 스냅샷 — scripts/build-works.mjs 가 광장 API 를 받아 만들어 둔 정적 파일.
+  // 페이지와 같은 자리에 있으므로 브라우저의 출처 제약(CORS)을 받지 않는다.
+  // 파일이 없으면 fetch 가 실패하고 미리보기만 빈 칸으로 떨어진다 — 페이지는 정상 동작.
+  return { url: new URL('./works.json', import.meta.url).href, kind: 'snapshot' };
 }
 
 // 클릭 측정 파라미터 (CONTRACT.md 5절)
