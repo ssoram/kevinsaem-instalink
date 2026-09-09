@@ -38,7 +38,14 @@ GET https://game.kevinsaem.com/api/plaza/recent?limit=4&mobile=true
 - `limit`이 작품 수보다 커도 에러 없이
 - `mobile` 파라미터는 무시하고 전체 반환해도 됨
 - 썸네일은 요청 시 변환 금지, 미리 만들어 저장
-- **CORS: 링크 페이지가 다른 도메인에 올라간다. `Access-Control-Allow-Origin` 필수.** 없으면 미리보기가 빈 채로 남는다
+- **CORS 필수.** 링크 페이지는 `http://link.kevinsaem.com`, API 는 `https://game.kevinsaem.com` 이다.
+  서브도메인이 다르면 브라우저는 다른 출처로 보므로, 같은 서버라도 아래 헤더가 없으면 요청이 차단되고 미리보기가 영영 빈 채로 남는다.
+
+  ```
+  Access-Control-Allow-Origin: http://link.kevinsaem.com
+  ```
+
+  인증 정보를 쓰지 않으므로 `Allow-Credentials` 는 불필요하고, 단순 GET 이라 프리플라이트도 뜨지 않는다.
 
 ---
 
@@ -49,7 +56,7 @@ API_BASE: https://game.kevinsaem.com
 
 CORS 허용 도메인: (설정한 값 그대로. 예: * 또는 https://...)
 
-/link 배포 도메인: https://...
+/link 배포 도메인: http://link.kevinsaem.com/ (확정)
 
 실제 응답:
 ```json
