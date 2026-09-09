@@ -1,0 +1,25 @@
+[
+  {
+    "title": "ㄹㅈㄷ아이템 알까기",
+    "thumbnail": "./mock/thumb-1.svg",
+    "url": "./mock/#work-1",
+    "category": "게임",
+    "grade": "중등",
+    "mobileSupported": true
+  },
+  {
+    "title": "우리 반 급식 투표 사이트",
+    "thumbnail": "./mock/thumb-3.svg",
+    "url": "./mock/#work-3",
+    "category": "웹",
+    "grade": "고등",
+    "mobileSupported": true
+  },
+  {
+    "title": "고양이 피하기",
+    "thumbnail": "./mock/thumb-4.svg",
+    "url": "./mock/#work-4",
+    "category": "게임",
+    "grade": "중등"
+  }
+]

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300" role="img">
+  <!-- mock 전용 임시 썸네일. 실제 API 는 400px webp 를 준다 (CONTRACT.md 2절). -->
+  <rect width="400" height="300" fill="#EDE6D8"/>
+  <rect x="24" y="24" width="352" height="252" rx="10" fill="none" stroke="#B0A184" stroke-width="2" stroke-dasharray="8 8"/>
+  <text x="200" y="158" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#B0A184">mock 3</text>
+</svg>

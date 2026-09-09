@@ -1,0 +1,302 @@
+/* 케빈샘AI코딩학원 — 인스타 링크 페이지
+   토큰: CONTRACT.md 4절 (광장에 CSS 변수가 있으면 그쪽이 원본이다. 확인 후 교체할 것)
+   모바일 전용. 높이 단위는 100dvh 만 쓴다 (vh 는 인앱 브라우저 하단 UI에 가려 버튼이 잘린다). */
+
+:root {
+  --bg:          #EDF1F6;
+  --surface:     #FFFFFF;
+  --text:        #1B2430;
+  --text-muted:  #7A8694;
+  --accent:      #1FA98A;
+  --accent-soft: #DFF3ED;
+  --gold:        #C08A2E;
+  --pink:        #E8546B;
+  --line:        #DCE3EB;
+
+  /* --text-muted 는 --bg 위에서 대비가 3.3:1 이라 작은 글씨에 못 쓴다.
+     본문급 보조 텍스트는 아래 파생값(5.0:1)을 쓴다. 광장 원본 변수 확인 시 교체. */
+  --text-muted-strong: #5C6875;
+
+  --font: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
+          system-ui, 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR',
+          'Helvetica Neue', Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  word-break: keep-all;      /* 한글이 단어 중간에서 안 끊기게 */
+  overflow-wrap: anywhere;   /* 아주 긴 제목·URL 대비 */
+}
+
+.page {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 22px 20px calc(22px + env(safe-area-inset-bottom));
+}
+
+/* ── 헤더 ─────────────────────────────────────────────── */
+
+.head { text-align: center; }
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+
+.logo { color: var(--accent); flex: none; }
+
+.brand-name {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-right: -0.15em; /* 자간 때문에 생기는 오른쪽 여백 보정 */
+}
+
+.brand-en {
+  margin: 5px 0 0;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  margin-right: -0.15em;
+  color: var(--text-muted-strong);
+}
+
+/* 판별 줄 — 3초 안에 "여기가 나랑 맞나"를 판단시키는 유일한 장치 */
+.qualifier {
+  margin: 10px 0 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted-strong);
+}
+
+/* ── 헤드라인 ─────────────────────────────────────────── */
+
+.hero {
+  margin: 22px 0 16px;
+  text-align: center;
+}
+
+.headline {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.36;
+  font-weight: 800;
+  letter-spacing: normal; /* 헤드라인은 자간 기본값 */
+}
+
+.headline-sub {
+  margin: 9px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text-muted-strong);
+}
+
+/* ── 광장 카드 — 이 페이지의 주인공 ────────────────────── */
+
+.plaza-card {
+  display: block;
+  padding: 13px;
+  border-radius: 22px;
+  background: var(--accent);
+  box-shadow: 0 12px 26px rgba(31, 169, 138, 0.30);
+  text-decoration: none;
+  color: var(--surface);
+  transform-origin: center;
+  animation: breathe 3s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1.00); }
+  50%      { transform: scale(1.02); }
+}
+
+.plaza-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/* 로딩 전에도 자리를 잡아 CLS 를 막는다 */
+.tile {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.20);
+}
+
+.tile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 작품이 없거나 4건 미만일 때 남는 칸.
+   가짜 작품 대신 자리(크기)만 지킨다 — 광장 API 연결 전 기본 상태가 이것이다. */
+.tile--empty {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+
+.badge {
+  position: absolute;
+  left: 6px;
+  bottom: 6px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(27, 36, 48, 0.74);
+  color: var(--surface);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.45;
+  white-space: nowrap;
+}
+
+.plaza-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  margin-top: 11px;
+  padding: 8px 12px;
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 16.5px;
+  font-weight: 700;
+  text-align: center;
+}
+
+
+/* ── 버튼 공통 ────────────────────────────────────────── */
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 8px 16px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--text);
+  text-align: center;
+}
+
+.btn--line {
+  background: var(--surface);
+  border: 1.5px solid var(--line);
+}
+
+.btn--accent {
+  background: var(--accent-soft);
+  border: 1.5px solid var(--accent);
+}
+
+/* ── 2차 CTA — 학원 페이지 ────────────────────────────── */
+
+.academy {
+  margin-top: 26px;
+  text-align: center;
+}
+
+.academy-lead {
+  margin: 0 0 9px;
+  font-size: 14px;
+  color: var(--text-muted-strong);
+}
+
+/* ── 3차 CTA — 문의 ──────────────────────────────────── */
+
+.contact { margin-top: 14px; }
+
+.contact-sub {
+  margin: 4px 0 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted-strong);
+}
+
+.text-link {
+  display: inline-block;
+  min-height: 44px;
+  line-height: 44px;
+  padding: 0 8px;
+  color: var(--text-muted-strong);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.dot { color: var(--text-muted-strong); }
+
+/* ── 위치 ─────────────────────────────────────────────── */
+
+.place {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted-strong);
+}
+
+/* 지도 — 자리는 CSS 가 고정한다. 로드 전후 높이가 같아 CLS 가 없다.
+   색을 쓰지 않고 얇은 테두리만 둬서 광장 카드와 경쟁하지 않게 한다. */
+.map {
+  height: 128px;
+  margin: 0 0 8px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.place-line { margin: 0; }
+
+.place .text-link { font-size: 12px; }
+
+/* ── 상태 ─────────────────────────────────────────────── */
+
+/* config.js 의 값이 아직 TODO_ 인 링크 — 눌러도 이동하지 않는다 */
+[data-todo] { cursor: default; }
+
+/* ── 접근성 ──────────────────────────────────────────── */
+
+a:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid var(--text);
+  outline-offset: 3px;
+  border-radius: 14px;
+}
+
+.plaza-card:focus-visible { outline-color: var(--text); }
+
+@media (prefers-reduced-motion: reduce) {
+  .plaza-card { animation: none; }
+  * { transition: none !important; }
+}

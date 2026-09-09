@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>케빈샘AI코딩학원 — 아이들이 만든 것들</title>
+<meta name="description" content="공부한 결과가 아니라, 놀다가 만든 것들">
+
+<!-- 오픈그래프 — 카톡·문자 공유 미리보기 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="케빈샘AI코딩학원 — 아이들이 만든 것들">
+<meta property="og:description" content="공부한 결과가 아니라, 놀다가 만든 것들">
+<!-- TODO: 광장 대표 작품 이미지 1200x630 의 절대 URL 로 교체 -->
+<meta property="og:image" content="TODO: 광장 대표 작품 이미지 1200x630">
+<!-- TODO: 이 페이지의 절대 URL (예: {광장 도메인}/link) 로 교체 -->
+<meta property="og:url" content="TODO">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<main class="page">
+
+  <!-- 헤더 -->
+  <header class="head">
+    <div class="brand">
+      <!-- TODO: 광장과 동일한 육각형 로고 파일로 교체 (지금은 임시 도형) -->
+      <svg class="logo" width="30" height="34" viewBox="0 0 30 34" aria-hidden="true" focusable="false">
+        <path d="M15 1.7 28 9.2v15.6L15 32.3 2 24.8V9.2z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+      </svg>
+      <h1 class="brand-name" data-field="academyName">케빈샘AI코딩학원</h1>
+    </div>
+    <p class="brand-en" data-field="academyNameEn">KEVINSAEM</p>
+    <!-- 판별 줄: [지역] · 초등~고등 · 코딩 -->
+    <p class="qualifier" data-field="qualifier"></p>
+  </header>
+
+  <!-- 헤드라인 (카피 수정 금지) -->
+  <section class="hero">
+    <h2 class="headline">여기 있는 건 전부<br>아이들이 만들었어요</h2>
+    <p class="headline-sub">공부한 결과가 아니라,<br>놀다가 만든 것들</p>
+  </section>
+
+  <!-- 광장 미리보기 — 주 CTA. 카드 전체가 하나의 탭 영역 -->
+  <a class="plaza-card" id="plaza-card" href="#" data-link="plaza" aria-label="메이커 광장에서 직접 해볼 수 있어요">
+    <span class="plaza-grid" id="plaza-grid">
+      <span class="tile tile--empty" aria-hidden="true"></span>
+      <span class="tile tile--empty" aria-hidden="true"></span>
+      <span class="tile tile--empty" aria-hidden="true"></span>
+      <span class="tile tile--empty" aria-hidden="true"></span>
+    </span>
+    <span class="plaza-cta">메이커 광장에서 직접 해볼 수 있어요</span>
+  </a>
+
+  <!-- 2차 CTA — 학원 페이지 -->
+  <section class="academy">
+    <p class="academy-lead">놀면서 어떻게 배우는지 궁금하다면</p>
+    <a class="btn btn--line" href="#" data-link="academy">학원 페이지 보기</a>
+  </section>
+
+  <!-- 3차 CTA — 문의. 위계를 둔다 -->
+  <section class="contact">
+    <a class="btn btn--accent" href="#" data-link="booking">수업 예약하기</a>
+    <p class="contact-sub">
+      <a class="text-link" href="#" data-link="kakao">카톡 문의</a>
+      <span class="dot" aria-hidden="true">·</span>
+      <a class="text-link" href="#" data-link="tel" id="tel-link">전화</a>
+    </p>
+  </section>
+
+  <!-- 위치 — 맨 아래, 가장 작게 -->
+  <section class="place">
+    <!-- MAP_EMBED_URL 이 채워지면 여기에 iframe 이 들어간다. TODO 면 칸(크기)만 지킨다 -->
+    <div class="map" id="map-slot"></div>
+    <p class="place-line">
+      <span class="place-addr" data-field="address"></span>
+      <span class="dot" aria-hidden="true">·</span>
+      <a class="text-link" href="#" data-link="map">지도</a>
+    </p>
+  </section>
+
+</main>
+
+<script type="module" src="./app.js"></script>
+</body>
+</html>
