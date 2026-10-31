@@ -7,6 +7,13 @@
     "grade": "중등"
   },
   {
+    "title": "chess combat",
+    "thumbnail": "https://game.kevinsaem.com/uploads/work-thumbs/u10409_06db3019c09f.jpg",
+    "url": "https://silver-bunny-a08e8e.netlify.app/",
+    "category": "게임",
+    "grade": "초등"
+  },
+  {
     "title": "포켓몬 딜계산기",
     "thumbnail": "https://game.kevinsaem.com/uploads/work-thumbs/u10049_580725757049.jpg",
     "url": "https://kimbbo41-lang.github.io/pokecalc/",
@@ -17,13 +24,6 @@
     "title": "1945 슈팅 게임",
     "thumbnail": "https://game.kevinsaem.com/uploads/work-thumbs/u10409_45d4af021d60.jpg",
     "url": "https://thunderous-arithmetic-73cda9.netlify.app/",
-    "category": "게임",
-    "grade": "초등"
-  },
-  {
-    "title": "chess combat",
-    "thumbnail": "https://game.kevinsaem.com/uploads/work-thumbs/u10409_06db3019c09f.jpg",
-    "url": "https://silver-bunny-a08e8e.netlify.app/",
     "category": "게임",
     "grade": "초등"
   }
